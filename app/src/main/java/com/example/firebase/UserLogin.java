@@ -38,6 +38,18 @@ public class UserLogin extends AppCompatActivity {
         Btn = findViewById(R.id.login);
         progressbar = findViewById(R.id.progressBar);
 
+        Button registerBtn = (Button)findViewById(R.id.register);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent
+                        = new Intent(UserLogin.this,
+                        UserRegister.class);
+                startActivity(intent);
+            }
+        });
+
         // Set on Click Listener on Sign-in button
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
