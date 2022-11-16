@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 
 public class UserRegister extends AppCompatActivity {
 
-    private EditText emailTextView, passwordTextView;
+    private EditText emailTextView, passwordTextView, usernameTextView;
     private Button Btn;
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
@@ -35,6 +35,7 @@ public class UserRegister extends AppCompatActivity {
         // initialising all views through id defined above
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.passwd);
+        usernameTextView = findViewById(R.id.username);
         Btn = findViewById(R.id.btnregister);
         progressbar = findViewById(R.id.progressbar);
 
@@ -55,9 +56,11 @@ public class UserRegister extends AppCompatActivity {
         progressbar.setVisibility(View.VISIBLE);
 
         // Take the value of two edit texts in Strings
-        String email, password;
+        String email, password, username;
         email = emailTextView.getText().toString();
         password = passwordTextView.getText().toString();
+        username = usernameTextView.getText().toString();
+
 
         // Validations for input email and password
         if (TextUtils.isEmpty(email)) {
@@ -79,7 +82,6 @@ public class UserRegister extends AppCompatActivity {
         mAuth
                 .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
